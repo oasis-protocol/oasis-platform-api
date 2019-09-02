@@ -1,0 +1,26 @@
+{
+  "name": "api_doc",
+  "description": "API for oasis-platform",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "aglio": "^2.3.0",
+    "gh-pages": "^2.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "aglio -i index.apib -o index.html",
+    "deploy": "npm run build && gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oasis-protocol/oasis-platform-api.git"
+  },
+  "author": "theoasis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oasis-protocol/oasis-platform-api/issues"
+  },
+  "homepage": "https://github.com/oasis-protocol/oasis-platform-api#readme"
+}
