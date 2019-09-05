@@ -83,7 +83,7 @@ FORMAT: 1A
     + Attributes (array[SimpleNFT]) 
     + Attributes (array[NFT]) 
 
-## 单个道具资产 [/item/{gid}/{uuid}[?hasProps={hasProps}]]
+## 道具详细数据 [/item/{gid}/{uuid}[?hasProps={hasProps}]]
 
 该API仅使用NFT的UUID来获取详情，后端需要遍历关联的资产合约查询数据，速度较慢。
 
@@ -102,11 +102,11 @@ FORMAT: 1A
     + Attributes(NFT)
 
 
-## 道具预览 [/preview/{gid}/{uuid}?uri={uri}&symbol={symbol}]
+## 道具扩展元数据 [/preview/{gid}/{uuid}?uri={uri}&symbol={symbol}]
 
 该API直接提供NFT的三个关键元数据，在后端可直接调用项目方的metaUrl进行扩展元数据解析，速度较快。
 
-### 获取道具详细数据 [GET]
+### 获取道具预览数据 [GET]
 
 + Parameters 
 
