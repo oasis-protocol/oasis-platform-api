@@ -48,7 +48,6 @@ FORMAT: 1A
         + bc (string) - 区块链网络, "eth" or "eos" or "trx" or "hyperchain"
         + name (string) - 自定义的游戏名
         + worldName (string) - 在合约中的世界名
-        + extMetaUrl (string) - 用于提供扩展元数据的api地址
 
 + Response 200 (application/json)
 
@@ -66,24 +65,27 @@ FORMAT: 1A
 
     + Attribute (Game)
 
-## 道具资产 [/items/{gid}?owner={owner}[&hasProps={hasProps}]]
+## 道具资产 [/items/{gid}?owner={owner}[&simple={simple}&hasProps={hasProps}]]
 
-### 获取所有道具资产 [GET]
+### 获取可转移的道具资产 [GET]
 
-获取某用户在某游戏的所有道具资产
+获取某用户在某游戏下的所有可转移的道具资产。
 
 + Parameters
 
     + gid (string) - 游戏世界id
     + owner (string) - 用户地址或账户名
-    + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销）
+    + simple (boolean, optional) - 是否只返回简单的数据项，默认为false
+    + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销），默认为false
 
 + Response 200 (application/json)
 
-    + Attributes (array[NFT])
+    + Attributes (array[SimpleNFT]) 
+    + Attributes (array[NFT]) 
 
+## 单个道具资产 [/item/{gid}/{uuid}[?hasProps={hasProps}]]
 
-## 单个道具资产 [/item/{gid}/{uuid}[?hasProps={hasProps}]] 
+该API仅使用NFT的UUID来获取详情，后端需要遍历关联的资产合约查询数据，速度较慢。
 
 ### 获取道具资产详情 [GET]
 
@@ -92,13 +94,45 @@ FORMAT: 1A
 + Parameters
 
     + uuid (string) - NFT Global id
-    + gid (number) - 游戏世界id
+    + gid (string) - 游戏世界id
     + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销）
 
 + Response 200 (application/json)
 
     + Attributes(NFT)
 
+
+## 道具预览 [/preview/{gid}/{uuid}?uri={uri}&symbol={symbol}]
+
+该API直接提供NFT的三个关键元数据，在后端可直接调用项目方的metaUrl进行扩展元数据解析，速度较快。
+
+### 获取道具详细数据 [GET]
+
++ Parameters 
+
+    + uuid (string) - NFT Global id
+    + gid (string) - 游戏世界id
+    + uri (string) - NFT URI
+    + symbol (string) - NFT Symbol
+
++ Response 200 (application/json)
+
+    + Attributes(NFT)
+
+## 映射关系 [/mapping/{symbol}?from={fromGameID}&to={toGameID}]
+
+获取指定道具在指定游戏中的映射
+
+### 获取所有映射 [GET]
+
++ Parameters
+
+    + gid (string) - 游戏世界id
+    + symbol (string) - 游戏道具的symbol
+
++ Response 200 (application/json)
+
+    + Attributes (array[Mapping])
 
 ## Data Structures
 
@@ -107,16 +141,18 @@ FORMAT: 1A
 + msg: 'success' (string)
 + data (object)
 
-### NFT
+### SimpleNFT
 + uuid: 1234 (string, required)
 + uri: oasis://0xabcdef123456/game/ARMOR/cat (string, required)
 + symbol: SWORD (string, required)
++ name: 圣诞老人猫 (string, required)
+
+### NFT (SimpleNFT)
 + contract: 0xabcdef123456 (string, required)
 + game: rogeman (string, required)
 + type: ARMOR (string, required)
 + category: cat (string, required)
 + img: https://google.com/image/xxx.jpg (string, required)
-+ name: 圣诞老人猫 (string, required)
 + desc: 这是一只猫
 + properties (object)
 
@@ -127,3 +163,7 @@ FORMAT: 1A
 + platform: eth
 + worldContract: 0xabcdef1234 (required)
 + worldName: cryptokitties (required)
+
+### Mapping
++ newSymbol 转移后的symbol (string, required)
++ logo (string)
