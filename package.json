@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "aglio -i index.apib -s",
     "build": "aglio -i index.apib --theme-template triple -o index.html",
     "deploy": "npm run build && gh-pages -d ."
   },
