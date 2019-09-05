@@ -24,14 +24,14 @@ FORMAT: 1A
 
 
 
-## 指定游戏世界 [/game/{id}] 
+## 指定游戏世界 [/game/{gid}] 
 
 `id`为游戏世界在中心化数据库内的id
 
 ### 获取游戏世界详情 [GET]
 
 + Parameters
-    + id (string) - 游戏世界id
+    + gid (string) - 游戏世界id
 
 + Response 200 (application/json)
 
@@ -59,7 +59,7 @@ FORMAT: 1A
 ### 删除游戏世界 [DELETE]
 
 + Parameters
-    + id (string) - 游戏世界id
+    + gid (string) - 游戏世界id
 
 + Response 200 (application/json)
 
@@ -156,7 +156,7 @@ FORMAT: 1A
 + properties (object)
 
 ### Game
-+ id: 12345 (string, required)
++ gid: 12345 (string, required)
 + name: 谜恋猫 (required)
 + logo: ""
 + platform: eth
