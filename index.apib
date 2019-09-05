@@ -31,7 +31,7 @@ FORMAT: 1A
 ### 获取游戏世界详情 [GET]
 
 + Parameters
-    + id (number) - 游戏世界id
+    + id (string) - 游戏世界id
 
 + Response 200 (application/json)
 
@@ -60,7 +60,7 @@ FORMAT: 1A
 ### 删除游戏世界 [DELETE]
 
 + Parameters
-    + id (number) - 游戏世界id
+    + id (string) - 游戏世界id
 
 + Response 200 (application/json)
 
@@ -74,7 +74,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + gid (number) - 游戏世界id
+    + gid (string) - 游戏世界id
     + owner (string) - 用户地址或账户名
     + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销）
 
@@ -121,7 +121,7 @@ FORMAT: 1A
 + properties (object)
 
 ### Game
-+ id: 12345 (number, required)
++ id: 12345 (string, required)
 + name: 谜恋猫 (required)
 + logo: ""
 + platform: eth
