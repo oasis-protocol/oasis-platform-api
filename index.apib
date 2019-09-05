@@ -11,7 +11,7 @@ FORMAT: 1A
 - data (object) - 以下API的返回值均指该字段
 
 
-## 获取所有游戏世界 [/games]
+## 获取所有游戏世界 [/games?bc={bc}]
 
 ### 获取所有游戏世界 [GET]
 
@@ -66,7 +66,7 @@ FORMAT: 1A
 
     + Attribute (Game)
 
-## 道具资产 [/items/{gid}]
+## 道具资产 [/items/{gid}?owner={owner}[&hasProps={hasProps}]]
 
 ### 获取所有道具资产 [GET]
 
@@ -83,7 +83,7 @@ FORMAT: 1A
     + Attributes (array[NFT])
 
 
-## 单个道具资产 [/item/{gid}/{uuid}] 
+## 单个道具资产 [/item/{gid}/{uuid}[?hasProps={hasProps}]] 
 
 ### 获取道具资产详情 [GET]
 
