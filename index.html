@@ -142,18 +142,19 @@
     "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
     "<span class="hljs-attribute">uri</span>": <span class="hljs-value"><span class="hljs-string">"oasis://0xabcdef123456/game/ARMOR/cat"</span></span>,
     "<span class="hljs-attribute">symbol</span>": <span class="hljs-value"><span class="hljs-string">"SWORD"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"圣诞老人猫"</span>
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"圣诞老人猫"</span></span>,
+    "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span>
   </span>},
   {
     "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
     "<span class="hljs-attribute">uri</span>": <span class="hljs-value"><span class="hljs-string">"oasis://0xabcdef123456/game/ARMOR/cat"</span></span>,
     "<span class="hljs-attribute">symbol</span>": <span class="hljs-value"><span class="hljs-string">"SWORD"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"圣诞老人猫"</span></span>,
+    "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span></span>,
     "<span class="hljs-attribute">contract</span>": <span class="hljs-value"><span class="hljs-string">"0xabcdef123456"</span></span>,
     "<span class="hljs-attribute">game</span>": <span class="hljs-value"><span class="hljs-string">"rogeman"</span></span>,
     "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"ARMOR"</span></span>,
     "<span class="hljs-attribute">category</span>": <span class="hljs-value"><span class="hljs-string">"cat"</span></span>,
-    "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span></span>,
     "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"这是一只猫"</span></span>,
     "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{}
   </span>}
@@ -170,11 +171,11 @@
   "<span class="hljs-attribute">uri</span>": <span class="hljs-value"><span class="hljs-string">"oasis://0xabcdef123456/game/ARMOR/cat"</span></span>,
   "<span class="hljs-attribute">symbol</span>": <span class="hljs-value"><span class="hljs-string">"SWORD"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"圣诞老人猫"</span></span>,
+  "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span></span>,
   "<span class="hljs-attribute">contract</span>": <span class="hljs-value"><span class="hljs-string">"0xabcdef123456"</span></span>,
   "<span class="hljs-attribute">game</span>": <span class="hljs-value"><span class="hljs-string">"rogeman"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"ARMOR"</span></span>,
   "<span class="hljs-attribute">category</span>": <span class="hljs-value"><span class="hljs-string">"cat"</span></span>,
-  "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span></span>,
   "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"这是一只猫"</span></span>,
   "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
@@ -193,6 +194,9 @@
     "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
+    "<span class="hljs-attribute">img</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
     "<span class="hljs-attribute">contract</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
@@ -203,9 +207,6 @@
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
     "<span class="hljs-attribute">category</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">img</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
     "<span class="hljs-attribute">desc</span>": <span class="hljs-value">{
@@ -221,11 +222,11 @@
     <span class="hljs-string">"uri"</span>,
     <span class="hljs-string">"symbol"</span>,
     <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"img"</span>,
     <span class="hljs-string">"contract"</span>,
     <span class="hljs-string">"game"</span>,
     <span class="hljs-string">"type"</span>,
-    <span class="hljs-string">"category"</span>,
-    <span class="hljs-string">"img"</span>
+    <span class="hljs-string">"category"</span>
   ]
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="道具详细数据-get" class="action get"><h4 class="action-heading"><div class="name">获取道具资产详情 （速度较慢，可用于仅知道uuid的场景）</div><a href="#道具详细数据-get" class="method get">GET</a><code class="uri">/item/{gid}/{uuid}[?hasProps={hasProps}]</code></h4><p>获取某给定道具的扩展信息。该API仅使用NFT的UUID来获取详情，后端需要遍历关联的资产合约查询数据，速度较慢。</p>
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>uuid</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>NFT Global id</p>
@@ -236,11 +237,11 @@
   "<span class="hljs-attribute">uri</span>": <span class="hljs-value"><span class="hljs-string">"oasis://0xabcdef123456/game/ARMOR/cat"</span></span>,
   "<span class="hljs-attribute">symbol</span>": <span class="hljs-value"><span class="hljs-string">"SWORD"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"圣诞老人猫"</span></span>,
+  "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span></span>,
   "<span class="hljs-attribute">contract</span>": <span class="hljs-value"><span class="hljs-string">"0xabcdef123456"</span></span>,
   "<span class="hljs-attribute">game</span>": <span class="hljs-value"><span class="hljs-string">"rogeman"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"ARMOR"</span></span>,
   "<span class="hljs-attribute">category</span>": <span class="hljs-value"><span class="hljs-string">"cat"</span></span>,
-  "<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"https://google.com/image/xxx.jpg"</span></span>,
   "<span class="hljs-attribute">desc</span>": <span class="hljs-value"><span class="hljs-string">"这是一只猫"</span></span>,
   "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
@@ -259,6 +260,9 @@
     "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
+    "<span class="hljs-attribute">img</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
     "<span class="hljs-attribute">contract</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
@@ -269,9 +273,6 @@
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
     "<span class="hljs-attribute">category</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">img</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
     </span>}</span>,
     "<span class="hljs-attribute">desc</span>": <span class="hljs-value">{
@@ -287,11 +288,11 @@
     <span class="hljs-string">"uri"</span>,
     <span class="hljs-string">"symbol"</span>,
     <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"img"</span>,
     <span class="hljs-string">"contract"</span>,
     <span class="hljs-string">"game"</span>,
     <span class="hljs-string">"type"</span>,
-    <span class="hljs-string">"category"</span>,
-    <span class="hljs-string">"img"</span>
+    <span class="hljs-string">"category"</span>
   ]
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="道具预览-get" class="action get"><h4 class="action-heading"><div class="name">获取道具资产详情（速度较快，可用于预览）</div><a href="#道具预览-get" class="method get">GET</a><code class="uri">/preview/{gid}/{uuid}?uri={uri}&amp;symbol={symbol}[&amp;hasProps={hasProps}]</code></h4><p>该API直接提供NFT的三个关键元数据，在后端可直接调用项目方的metaUrl进行扩展元数据解析，速度较快。</p>
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>uuid</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>NFT Global id</p>
