@@ -4,6 +4,13 @@ FORMAT: 1A
 
 绿洲平台API全文档
 
+## 通用的返回结构体
+
+- code (number)
+- msg (string)
+- data (object) - 以下API的返回值均指该字段
+
+
 ## 获取所有游戏世界 [/games]
 
 ### 获取所有游戏世界 [GET]
@@ -94,6 +101,11 @@ FORMAT: 1A
 
 
 ## Data Structures
+
+### Common
++ code: 0 (number,required)
++ msg: 'success' (string)
++ data (object)
 
 ### NFT
 + uuid: 1234 (string, required)
