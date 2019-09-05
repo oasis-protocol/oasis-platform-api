@@ -85,7 +85,7 @@ FORMAT: 1A
 
 ## 道具详细数据 [/item/{gid}/{uuid}[?hasProps={hasProps}]]
 
-### 获取道具资产详情 [GET]
+### 获取道具资产详情 （速度较慢，可用于仅知道uuid的场景）[GET]
 
 获取某给定道具的扩展信息。该API仅使用NFT的UUID来获取详情，后端需要遍历关联的资产合约查询数据，速度较慢。
 
@@ -100,9 +100,9 @@ FORMAT: 1A
     + Attributes(NFT)
 
 
-## 道具扩展元数据 [/preview/{gid}/{uuid}?uri={uri}&symbol={symbol}]
+## 道具预览 [/preview/{gid}/{uuid}?uri={uri}&symbol={symbol}[&hasProps={hasProps}]]
 
-### 获取道具预览数据 [GET]
+### 获取道具资产详情（速度较快，可用于预览） [GET]
 
 该API直接提供NFT的三个关键元数据，在后端可直接调用项目方的metaUrl进行扩展元数据解析，速度较快。
 
@@ -112,6 +112,7 @@ FORMAT: 1A
     + gid (string) - 游戏世界id
     + uri (string) - NFT URI
     + symbol (string) - NFT Symbol
+    + hasProps (boolean,optional) - 是否返回`properties`字段（有一定字节开销），默认为false
 
 + Response 200 (application/json)
 
@@ -119,9 +120,9 @@ FORMAT: 1A
 
 ## 映射关系 [/mapping/{symbol}?from={fromGameID}&to={toGameID}]
 
-获取指定道具在指定游戏中的映射
-
 ### 获取所有映射 [GET]
+
+获取指定道具在指定游戏中的映射
 
 + Parameters
 
@@ -164,4 +165,4 @@ FORMAT: 1A
 
 ### Mapping
 + newSymbol 转移后的symbol (string, required)
-+ logo (string)
++ logo (string, required)
