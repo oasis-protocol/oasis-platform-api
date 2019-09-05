@@ -9,7 +9,7 @@ FORMAT: 1A
 ### 获取所有游戏世界 [GET]
 
 + Parameters
-    + bc (string) - 区块链网络，"eth" or "eos" or "trx" or "hyperchain"
+    + bc (string) - 区块链网络，"eth" or "eos" or "trx" or "hyperchain"。空值代表返回所有。
 
 + Response 200 (application/json)
 
@@ -25,7 +25,6 @@ FORMAT: 1A
 
 + Parameters
     + id (number) - 游戏世界id
-    + bc (number) - 区块链网络, "eth" or "eos" or "trx" or "hyperchain"
 
 + Response 200 (application/json)
 
@@ -55,7 +54,6 @@ FORMAT: 1A
 
 + Parameters
     + id (number) - 游戏世界id
-    + bc (number) - 区块链网络, "eth" or "eos" or "trx" or "hyperchain"
 
 + Response 200 (application/json)
 
@@ -87,7 +85,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + uuid (number) - NFT Global id
+    + uuid (string) - NFT Global id
     + gid (number) - 游戏世界id
     + bc (string) - 区块链网络,"eth" or "eos" or "trx" or "hyperchain"
     + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销）
@@ -100,7 +98,7 @@ FORMAT: 1A
 ## Data Structures
 
 ### NFT
-+ uuid: 1234 (number, required)
++ uuid: 1234 (string, required)
 + uri: oasis://0xabcdef123456/game/ARMOR/cat (string, required)
 + symbol: SWORD (string, required)
 + contract: 0xabcdef123456 (string, required)
