@@ -11,12 +11,12 @@ FORMAT: 1A
 - data (object) - 以下API的返回值均指该字段
 
 
-## 获取所有游戏世界 [/games]
+## 获取所有游戏世界 [/games?bc={bc}]
 
 ### 获取所有游戏世界 [GET]
 
 + Parameters
-    + bc (string) - 区块链网络，"eth" or "eos" or "trx" or "hyperchain"。空值代表返回所有。
+    + bc (string, optional) - 区块链网络，"eth" or "eos" or "trx" or "hyperchain"。空值代表返回所有。
 
 + Response 200 (application/json)
 
@@ -24,14 +24,14 @@ FORMAT: 1A
 
 
 
-## 指定游戏世界 [/game/{id}] 
+## 指定游戏世界 [/game/{gid}] 
 
 `id`为游戏世界在中心化数据库内的id
 
 ### 获取游戏世界详情 [GET]
 
 + Parameters
-    + id (string) - 游戏世界id
+    + gid (string) - 游戏世界id
 
 + Response 200 (application/json)
 
@@ -48,7 +48,6 @@ FORMAT: 1A
         + bc (string) - 区块链网络, "eth" or "eos" or "trx" or "hyperchain"
         + name (string) - 自定义的游戏名
         + worldName (string) - 在合约中的世界名
-        + extMetaUrl (string) - 用于提供扩展元数据的api地址
 
 + Response 200 (application/json)
 
@@ -60,45 +59,79 @@ FORMAT: 1A
 ### 删除游戏世界 [DELETE]
 
 + Parameters
-    + id (string) - 游戏世界id
+    + gid (string) - 游戏世界id
 
 + Response 200 (application/json)
 
     + Attribute (Game)
 
-## 道具资产 [/items/{gid}]
+## 道具资产 [/items/{gid}?owner={owner}[&simple={simple}&hasProps={hasProps}]]
 
-### 获取所有道具资产 [GET]
+### 获取可转移的道具资产 [GET]
 
-获取某用户在某游戏的所有道具资产
+获取某用户在某游戏下的所有可转移的道具资产。
 
 + Parameters
 
     + gid (string) - 游戏世界id
     + owner (string) - 用户地址或账户名
-    + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销）
+    + simple (boolean, optional) - 是否只返回简单的数据项，默认为false
+    + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销），默认为false
 
 + Response 200 (application/json)
 
-    + Attributes (array[NFT])
+    + Attributes (array[SimpleNFT]) 
+    + Attributes (array[NFT]) 
 
+## 道具详细数据 [/item/{gid}/{uuid}[?hasProps={hasProps}]]
 
-## 单个道具资产 [/item/{gid}/{uuid}] 
+### 获取道具资产详情 （速度较慢，可用于仅知道uuid的场景）[GET]
 
-### 获取道具资产详情 [GET]
-
-获取某给定道具的扩展信息
+获取某给定道具的扩展信息。该API仅使用NFT的UUID来获取详情，后端需要遍历关联的资产合约查询数据，速度较慢。
 
 + Parameters
 
     + uuid (string) - NFT Global id
-    + gid (number) - 游戏世界id
+    + gid (string) - 游戏世界id
     + hasProps (boolean, optional) - 是否返回`properties`字段（有一定字节开销）
 
 + Response 200 (application/json)
 
     + Attributes(NFT)
 
+
+## 道具预览 [/preview/{gid}/{uuid}?uri={uri}&symbol={symbol}[&hasProps={hasProps}]]
+
+### 获取道具资产详情（速度较快，可用于预览） [GET]
+
+该API直接提供NFT的三个关键元数据，在后端可直接调用项目方的metaUrl进行扩展元数据解析，速度较快。
+
++ Parameters 
+
+    + uuid (string) - NFT Global id
+    + gid (string) - 游戏世界id
+    + uri (string) - NFT URI
+    + symbol (string) - NFT Symbol
+    + hasProps (boolean,optional) - 是否返回`properties`字段（有一定字节开销），默认为false
+
++ Response 200 (application/json)
+
+    + Attributes(NFT)
+
+## 映射关系 [/mapping/{symbol}?from={fromGameID}&to={toGameID}]
+
+### 获取所有映射 [GET]
+
+获取指定道具在指定游戏中的映射
+
++ Parameters
+
+    + gid (string) - 游戏世界id
+    + symbol (string) - 游戏道具的symbol
+
++ Response 200 (application/json)
+
+    + Attributes (array[Mapping])
 
 ## Data Structures
 
@@ -107,23 +140,29 @@ FORMAT: 1A
 + msg: 'success' (string)
 + data (object)
 
-### NFT
+### SimpleNFT
 + uuid: 1234 (string, required)
 + uri: oasis://0xabcdef123456/game/ARMOR/cat (string, required)
 + symbol: SWORD (string, required)
++ name: 圣诞老人猫 (string, required)
++ img: https://google.com/image/xxx.jpg (string, required)
+
+### NFT (SimpleNFT)
 + contract: 0xabcdef123456 (string, required)
 + game: rogeman (string, required)
 + type: ARMOR (string, required)
 + category: cat (string, required)
-+ img: https://google.com/image/xxx.jpg (string, required)
-+ name: 圣诞老人猫 (string, required)
 + desc: 这是一只猫
 + properties (object)
 
 ### Game
-+ id: 12345 (string, required)
++ gid: 12345 (string, required)
 + name: 谜恋猫 (required)
 + logo: ""
 + platform: eth
 + worldContract: 0xabcdef1234 (required)
 + worldName: cryptokitties (required)
+
+### Mapping
++ newSymbol 转移后的symbol (string, required)
++ logo (string, required)
