@@ -48,6 +48,7 @@ FORMAT: 1A
         + bc (string) - 区块链网络, "eth" or "eos" or "trx" or "hyperchain"
         + name (string) - 自定义的游戏名
         + worldName (string) - 在合约中的世界名
+        + extMetaUrl (string) - 该游戏获取扩展元数据的api地址
 
 + Response 200 (application/json)
 
@@ -118,7 +119,7 @@ FORMAT: 1A
 
     + Attributes(NFT)
 
-## 映射关系 [/mapping/{symbol}?from={fromGameID}&to={toGameID}]
+## 映射关系 [/mapping/{gid}/{symbol}?from={fromGameID}&to={toGameID}]
 
 ### 获取所有映射 [GET]
 
@@ -162,6 +163,7 @@ FORMAT: 1A
 + platform: eth
 + worldContract: 0xabcdef1234 (required)
 + worldName: cryptokitties (required)
++ extMetaUrl: http://api.cryptokitty.co/ (required)
 
 ### Mapping
 + newSymbol 转移后的symbol (string, required)
